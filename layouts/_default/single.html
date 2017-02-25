@@ -7,6 +7,12 @@
     {{ .Date.Format (.Site.Params.dateform | default "January 2006") }} · {{ .ReadingTime }} minute read
   </div>
 
+  {{ with .Params.tags }}
+  <div class="tags_list">
+    {{ range . }} <span class="tags_item"><a href="/tags/{{ lower . }}/">{{ . }}</a></span>{{ end }}
+  </div>
+  {{ end }}
+
   <div class="entry-content">
     {{ .Content }}
   </div>
