@@ -1,0 +1,14 @@
+{{ partial "header.html" . }}
+
+<section id=content>
+  <h1>Series</h1>
+  <ul class=posts_listing>
+    {{ range $key, $value := .Data.Terms }}
+      <li>
+        <h2><a href="/series/{{ $key | urlize }}">{{ $key }} <span class="tags_number">{{ len $value }}</span></a></h2>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+
+{{ partial "footer.html" . }}
