@@ -2,6 +2,15 @@
 <html lang="{{ .Site.LanguageCode }}">
   <head>
     <meta charset="utf-8">
+    <!-- start: twitter card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ .Site.Params.Social.Twitter }}">
+    <meta name="twitter:creator" content="{{ .Site.Params.Social.Twitter }}">
+    <meta name="twitter:title" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
+    <meta name="twitter:url" content="{{ .Permalink }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.eyecatch }}">
+    <meta name="twitter:description" content="{{if .IsPage}}{{ .Summary }}{{else}}{{.Site.Params.Description}}{{end}}">
+    <!-- end: twitter card -->
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -27,7 +36,7 @@
 
     {{ partial "styles.html" . }}
 
-    <link rel="shortcut icon" href="/favicon.ico">
+    {{ partial "favicons.html" . }}
 
     {{ if .RSSLink }}
       <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
