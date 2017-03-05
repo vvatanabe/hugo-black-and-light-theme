@@ -8,7 +8,7 @@
     <meta name="twitter:creator" content="{{ .Site.Params.Social.Twitter }}">
     <meta name="twitter:title" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
     <meta name="twitter:url" content="{{ .Permalink }}">
-    <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.eyecatch }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.eyecatch | default .Site.Params.eyecatch }}">
     <meta name="twitter:description" content="{{if .IsPage}}{{ .Summary }}{{else}}{{.Site.Params.Description}}{{end}}">
     <!-- end: twitter card -->
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
