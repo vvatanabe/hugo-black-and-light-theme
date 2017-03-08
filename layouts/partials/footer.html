@@ -1,4 +1,9 @@
   </div>
+  <noscript id="deferred-styles">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+  </noscript>
+  {{ partial "deferred_styles.html" . }}
   {{ template "_internal/disqus.html" . }}
   {{ template "_internal/google_analytics_async.html" . }}
 </body>
