@@ -1,0 +1,27 @@
+{{ if ne .Params.share false}}
+<div id="share">
+  <ul>
+    <li>Share</li>
+    <li>
+      <a href="https://twitter.com/share?text={{ .Title | safeHTML}}&nbsp;-&nbsp;{{ .Site.Title }}&amp;url={{ .Permalink }}"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"><i class="fa fa-twitter fa-lg"></i></a>
+    </li>
+    <li>
+      <a id=js-share-facebook><i class="fa fa-facebook fa-lg"></i></a>
+      <script>
+        document.getElementById('js-share-facebook').onclick = function() {
+          FB.ui({
+            display: 'popup',
+            method: 'share',
+            href: '{{ .Permalink }}',
+          }, function(response){});
+        }
+      </script>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url={{ .Permalink }}"
+        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"><i class="fa fa-google-plus fa-lg"></i></a>
+    </li>
+  </ul>
+</div>
+{{end}}

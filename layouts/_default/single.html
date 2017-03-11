@@ -4,15 +4,14 @@
   <h1>{{ if .Params.heading }} {{ .Params.heading }} {{ else }} {{ .Title }} {{ end }}</h1>
 
   <div id=sub-header>
-    {{ .Date.Format (.Site.Params.dateform | default "January 2006") }} · {{ .ReadingTime }} minute read
+    <div>{{ .Date.Format (.Site.Params.dateform | default "January 2006") }} · {{ .ReadingTime }} minute read</div>
+    <div>{{ partial "share.html" . }}</div>
+    {{ with .Params.tags }}
+    <div class=tags>
+      {{ range . }} <span class="tags_item"><a href="/tags/{{ lower . }}/">#{{ . }}</a></span> {{ end }}
+    </div>
+    {{ end }}
   </div>
-
-  {{ with .Params.tags }}
-  <div class="tags_list">
-    {{ range . }} <span class="tags_item"><a href="/tags/{{ lower . }}/">{{ . }}</a></span>{{ end }}
-  </div>
-  {{ end }}
-
   <div class="entry-content">
     {{ .Content }}
   </div>
