@@ -2,6 +2,13 @@
 <html lang="{{ .Site.LanguageCode }}">
   <head>
     <meta charset="utf-8">
+    <!-- start: Open Graph -->
+    <meta property="og:title" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}" />
+    <meta property="og:description" content="{{if .IsPage}}{{ .Summary }}{{else}}{{.Site.Params.Description}}{{end}}">
+    <meta property="og:type" content="blog" />
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.eyecatch | default .Site.Params.eyecatch }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <!-- end: Open Graph -->
     <!-- start: twitter card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="{{ .Site.Params.Social.Twitter }}">
